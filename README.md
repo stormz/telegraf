@@ -193,6 +193,7 @@ Telegraf can also collect metrics via the following service plugins:
   * [github](./plugins/inputs/webhooks/github)
   * [mandrill](./plugins/inputs/webhooks/mandrill)
   * [rollbar](./plugins/inputs/webhooks/rollbar)
+  * [stripe](./plugins/inputs/webhooks/stripe)
 
 ## Processor Plugins
 
