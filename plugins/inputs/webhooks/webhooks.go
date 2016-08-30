@@ -14,6 +14,7 @@ import (
 	"github.com/influxdata/telegraf/plugins/inputs/webhooks/github"
 	"github.com/influxdata/telegraf/plugins/inputs/webhooks/mandrill"
 	"github.com/influxdata/telegraf/plugins/inputs/webhooks/rollbar"
+	"github.com/influxdata/telegraf/plugins/inputs/webhooks/stripe"
 )
 
 type Webhook interface {
@@ -31,6 +32,7 @@ type Webhooks struct {
 	Filestack *filestack.FilestackWebhook
 	Mandrill  *mandrill.MandrillWebhook
 	Rollbar   *rollbar.RollbarWebhook
+	Stripe    *stripe.StripeWebhook
 }
 
 func NewWebhooks() *Webhooks {
@@ -53,6 +55,9 @@ func (wb *Webhooks) SampleConfig() string {
 
   [inputs.webhooks.rollbar]
     path = "/rollbar"
+
+  [inputs.webhooks.stripe]
+    path = "/stripe"
  `
 }
 
