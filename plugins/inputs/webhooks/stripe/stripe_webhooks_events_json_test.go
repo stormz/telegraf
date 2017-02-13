@@ -110,3 +110,85 @@ func EventPingJSON() string {
            "type": "ping"
         }`
 }
+
+func EventSubscriptionJSON(event_type string) string {
+	return fmt.Sprintf(`
+        {
+           "id": "evt_19lsbWI4amPefGV6qFUNJ1OA",
+           "object": "event",
+           "api_version": "2016-03-07",
+           "created": 1486787722,
+           "livemode": false,
+           "pending_webhooks": 0,
+           "request": null,
+           "type": "%s",
+           "data": {
+             "object": {
+               "id": "sub_A6gF86iRg3x3Vj",
+               "object": "subscription",
+               "application_fee_percent": null,
+               "cancel_at_period_end": false,
+               "canceled_at": null,
+               "created": 1486927210,
+               "current_period_end": 1489346410,
+               "current_period_start": 1486927210,
+               "customer": "cus_A6gC9TnUJmEakO",
+               "discount": null,
+               "ended_at": null,
+               "items": {
+                 "object": "list",
+                 "data": [
+                   {
+                     "id": "si_19mStK2eZvKYlo2CSR0XMmOy",
+                     "object": "subscription_item",
+                     "created": 1486927211,
+                     "plan": {
+                       "id": "gold-startup-079",
+                       "object": "plan",
+                       "amount": 999,
+                       "created": 1486927168,
+                       "currency": "usd",
+                       "interval": "month",
+                       "interval_count": 1,
+                       "livemode": false,
+                       "metadata": {
+                       },
+                       "name": "Gold Startup",
+                       "statement_descriptor": null,
+                       "trial_period_days": null
+                     },
+                     "quantity": 1
+                   }
+                 ],
+                 "has_more": false,
+                 "total_count": 1,
+                 "url": "/v1/subscription_items?subscription=sub_A6gF86iRg3x3Vj"
+               },
+               "livemode": false,
+               "metadata": {
+               },
+               "plan": {
+                 "id": "gold-startup-079",
+                 "object": "plan",
+                 "amount": 999,
+                 "created": 1486927168,
+                 "currency": "usd",
+                 "interval": "month",
+                 "interval_count": 1,
+                 "livemode": false,
+                 "metadata": {
+                 },
+                 "name": "Gold Startup",
+                 "statement_descriptor": null,
+                 "trial_period_days": null
+               },
+               "quantity": 1,
+               "start": 1486927210,
+               "status": "active",
+               "tax_percent": null,
+               "trial_end": null,
+               "trial_start": null
+             }
+           }
+        }`, event_type)
+}

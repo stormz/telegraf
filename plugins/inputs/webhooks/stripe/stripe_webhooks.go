@@ -69,6 +69,12 @@ func NewEvent(event *Event) (Object, error) {
 		return generateObject(&Charge{}, event.Data.Object)
 	case "charge.refunded":
 		return generateObject(&Charge{}, event.Data.Object)
+	case "customer.subscription.created":
+		return generateObject(&Subscription{}, event.Data.Object)
+	case "customer.subscription.updated":
+		return generateObject(&Subscription{}, event.Data.Object)
+	case "customer.subscription.deleted":
+		return generateObject(&Subscription{}, event.Data.Object)
 	default:
 		return nil, errors.New("Not implemented type: " + event.Type)
 	}

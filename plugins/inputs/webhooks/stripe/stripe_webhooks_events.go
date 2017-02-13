@@ -39,3 +39,23 @@ func (charge *Charge) Fields() map[string]interface{} {
 		"currency": charge.Currency,
 	}
 }
+
+type Plan struct {
+	Id string `json:"id"`
+}
+
+type Subscription struct {
+	Id   string `json:"id"`
+	Plan Plan   `json:"plan"`
+}
+
+func (subscription *Subscription) Tags() map[string]string {
+	return map[string]string{}
+}
+
+func (subscription *Subscription) Fields() map[string]interface{} {
+	return map[string]interface{}{
+		"id": subscription.Id,
+		"plan": subscription.Plan.Id,
+	}
+}
