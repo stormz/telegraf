@@ -85,3 +85,48 @@ func TestChargeRefunded(t *testing.T) {
 func TestPing(t *testing.T) {
 	request(t, EventPingJSON(), http.StatusOK)
 }
+
+func TestSubscriptionCreated(t *testing.T) {
+	var acc = request(t, EventSubscriptionJSON("customer.subscription.created"), http.StatusOK)
+
+	fields := map[string]interface{}{
+		"id": "sub_A6gF86iRg3x3Vj",
+		"plan": "gold-startup-079",
+	}
+
+	tags := map[string]string{
+		"event": "customer.subscription.created",
+	}
+
+	acc.AssertContainsTaggedFields(t, "stripe_webhooks", fields, tags)
+}
+
+func TestSubscriptionUpdated(t *testing.T) {
+	var acc = request(t, EventSubscriptionJSON("customer.subscription.updated"), http.StatusOK)
+
+	fields := map[string]interface{}{
+		"id": "sub_A6gF86iRg3x3Vj",
+		"plan": "gold-startup-079",
+	}
+
+	tags := map[string]string{
+		"event": "customer.subscription.updated",
+	}
+
+	acc.AssertContainsTaggedFields(t, "stripe_webhooks", fields, tags)
+}
+
+func TestSubscriptionDeleted(t *testing.T) {
+	var acc = request(t, EventSubscriptionJSON("customer.subscription.deleted"), http.StatusOK)
+
+	fields := map[string]interface{}{
+		"id": "sub_A6gF86iRg3x3Vj",
+		"plan": "gold-startup-079",
+	}
+
+	tags := map[string]string{
+		"event": "customer.subscription.deleted",
+	}
+
+	acc.AssertContainsTaggedFields(t, "stripe_webhooks", fields, tags)
+}
